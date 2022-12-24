@@ -1,5 +1,6 @@
 import os
 
+
 class Config:
     SECRET_KEY = os.urandom(32)
     basedir = os.path.abspath(os.path.dirname(__file__))
