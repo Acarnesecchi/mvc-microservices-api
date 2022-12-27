@@ -1,6 +1,6 @@
 
 
-.grid-3 {
+.movie-content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -10,7 +10,7 @@
     grid-auto-rows: 1fr;
 }
 
-.grid-3 .movie {
+.movie {
     padding: 10px;
     background-color: #fff;
     border: 1px solid #ccc;

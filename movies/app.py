@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from model.Movies import db
 from routes.movies_bp import movies_bp
 
-app = Flask(__name__, template_folder='view')
+app = Flask(__name__, template_folder='view', static_folder='static')
 app.config.from_object('config')
 
 db.init_app(app)
