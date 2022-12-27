@@ -5,7 +5,7 @@ In that machine I have installed a postgresql database and an apache2 server and
 # PostgreSQL 
 * After installing postgres using ```sudo apt install postgresql``` I had to define a new firewall rule to grant access from all IPs to this VM with the tag 'postgres' using tcp on port 5432
 * I then modified the file ```postgresql.conf``` to change ```listen_address = '*'```
-* And the file ```pg_hba.conf``` to change the ipV4 and ipV6 (not really neccessary) to ```host all all 0.0.0.0/0 trust``` and ```host all all ::/0 trust```
+* And the file ```pg_hba.conf``` to change the ipV4 and ipV6 (not really necessary) to ```host all all 0.0.0.0/0 trust``` and ```host all all ::/0 trust```
 * Restarted the service using ```sudo systemctl restart postgres```
 
 I now can access the database from my own computer in order to access the information needed for the API.
@@ -19,7 +19,7 @@ I now can access the database from my own computer in order to access the inform
     ServerName [external IP]
     DocumentRoot /var/www/images
     <Directory /var/www/images>
-        Options Indexed FollowSymLinks
+        Options Indexes FollowSymLinks
         AllowOverride None
         Require all granted
     </Directory>
@@ -29,4 +29,5 @@ I now can access the database from my own computer in order to access the inform
 * And to set the permissions for the image directory and so that the Apache2 server has access to the images I ran the following commands: ```sudo chown -R www-data:www-data /var/www/images``` ```sudo chmod -R 755 /var/www/images```
 * After restarting the server using ```sudo systemctl restart apache2``` I had the server working
 * ~~In order to get the actual images to store I made a new firewall rule to allow FPT traffic~~
-* Upload the images in a githup repository and clone it in the server using ```git clone [repository]``` because leaving ports 20 and 21 open is a bad idea and my VM has been compromised and used for mining cryptocurrency :-)
+* Upload the images in a GitHub repository and clone it in the server using ```git clone [repository]``` because leaving ports 20 and 21 open is a bad idea and my VM has been compromised and used for mining cryptocurrency :-)
+* To upload images from the flask app to the server I would need to use a VPN and use the internal IP to communicate or expose the Flask app to the internet using ngrok.
