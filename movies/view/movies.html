@@ -2,21 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>FlaskAPI</title>
 </head>
 <body>
     <h1>Hello World!</h1>
     <h2>Get all the movies!</h2>
-    {% block content %}
-    {% for movie in movies %}
-        <h2>{{ movie['title'] }}</h2>
-        <p>Genre: {{ movie['genre'] }}</p>
-        <p>Year: {{ movie['year'] }}</p>
-        <p>Rating: {{ movie['rating'] }}</p>
-        <p>Image: {{ movie['image'] }}</p>
-    {% endfor %}
+    <div class = "movie-content">
+        {% block content %}
+        {% for movie in movies %}
+            <a href="http://localhost:5000/movies/{{movie.id}}">
+            <div class = "movie">
+                <img src="http://{{ movie.image }}" alt="movie image">
+                <h3>{{ movie.title }}</h3>
+            </div>
+            </a>
+        {% endfor %}
+        {% endblock %}
+    </div>
 
-{% endblock %}
     
 </body>
 </html>
