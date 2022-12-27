@@ -28,4 +28,5 @@ I now can access the database from my own computer in order to access the inform
 * I then enabled the virtual host using ```sudo a2ensite [external IP]```
 * And to set the permissions for the image directory and so that the Apache2 server has access to the images I ran the following commands: ```sudo chown -R www-data:www-data /var/www/images``` ```sudo chmod -R 755 /var/www/images```
 * After restarting the server using ```sudo systemctl restart apache2``` I had the server working
-* In order to get the actual images to store I made a new firewall rule to allow SFPT traffic
+* ~~In order to get the actual images to store I made a new firewall rule to allow FPT traffic~~
+* Upload the images in a githup repository and clone it in the server using ```git clone [repository]``` because leaving ports 20 and 21 open is a bad idea and my VM has been compromised and used for mining cryptocurrency :-)
