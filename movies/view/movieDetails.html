@@ -1,0 +1,37 @@
+<doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/violent-button.css') }}"/>
+    <title>Document</title>
+</head>
+<body>
+<h1>My First Heading</h1>
+        {% block content %}
+            <div class = "movie">
+                <h1>{{ movie.title }}</h1>
+                <p>{{ movie.genre }}</p>
+                <p>{{ movie.year }}</p>
+                <p>{{ movie.rating }}</p>
+                <img src="{{ movie.image }}" alt="movie image">
+            </div>
+            </a>
+        {% endblock %}
+    <button type="button" onclick="window.location.href='http://localhost:5000/movies/edit/{{ movie.id }}'">Edit movie</button>
+    <button onclick="deleteMovie({{ movie.id }})">Delete movie</button>
+
+    <script>
+        function deleteMovie(id) {
+            fetch('http://localhost:5000/movies/' + id, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(function (response) {
+                window.location.href = 'http://localhost:5000/movies'
+            })
+        }
+    </script>
+</body>
+</html>
+</doctype>

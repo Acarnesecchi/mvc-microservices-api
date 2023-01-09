@@ -1,0 +1,52 @@
+.violent-button {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    background-color: red;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    outline: none;
+    padding: 20px 40px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.violent-button:active {
+    transform: translate(0px, 5px);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+.violent-button:before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, #ff0000, #ffff00);
+    background-size: 400%;
+    animation: flame 3s linear infinite;
+    z-index: -1;
+}
+
+@keyframes flame {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.violent-button:hover:before {
+    top: -25%;
+    left: -50%;
+    width: 150%;
+    height: 150%;
+}

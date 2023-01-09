@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form id="edit-form">
+  <!-- form elements here -->
+  <label for="title">Title:</label><br>
+  <input type="text" id="title" name="title" value="{{ movie.title }}"><br>
+
+  <!-- Genre -->
+  <label for="genre">Genre:</label><br>
+            <select id="genre" name="genre">
+                <option value="action">Action</option>
+                <option value="adventure">Adventure</option>
+                <option value="comedy">Comedy</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="horror">Horror</option>
+                <option value="drama">Romance</option>
+                <option value="western">Western</option>
+                <option value="science-fiction">Sci-Fi</option>
+            </select>
+            <br>
+
+  <!-- Year -->
+  <label for="year">Year:</label><br>
+  <input type="text" id="year" name="year" value="{{ movie.year }}"><br>
+
+  <!-- Rating -->
+  <label for="rating">Rating:</label><br>
+  <input type="text" id="rating" name="rating" value="{{ movie.rating }}"><br>
+
+  <!-- Image -->
+  <label for="image">Image:</label><br>
+  <input type="text" id="image" name="image" value="{{ movie.image }}"><br><br>
+
+  <!-- Hidden input field to send a PUT request -->
+  <input type="hidden" name="_method" value="PUT">
+
+  <!-- Submit button -->
+  <button type="submit" onclick="updateMovie()">Update movie</button>
+</form>
+
+<script>
+  function updateMovie() {
+    fetch('/movies/{{ movie.id }}', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title: document.getElementById('title').value,
+        genre: document.getElementById('genre').value,
+        year: document.getElementById('year').value,
+        rating: document.getElementById('rating').value,
+        image: document.getElementById('image').value
+      })
+    }).then(function (response) {
+      window.location.href = 'http://localhost:5000/movies'
+    })
+  }
+</script>
+</body>
+</html>
