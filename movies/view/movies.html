@@ -6,11 +6,10 @@
     <title>Movies API</title>
 </head>
 <body>
-    <h1>Hello World!</h1>
-    <h2>Get all the movies!</h2>
-    <p> <a href="/movies/create">Or create your own:</a></p>
+{% extends "index.html" %}
+{% block content %}
+    <button> <a href="/movies/create">Or create your own:</a></button>
     <div class = "movie-content">
-        {% block content %}
         {% for movie in movies %}
             <a href="http://localhost:5000/movies/{{movie.id}}">
             <div class = "movie">
@@ -19,18 +18,18 @@
             </div>
             </a>
         {% endfor %}
-        {% endblock %}
-        {% if movies %}
-        <div class = "pagination">
-            {% if page > 1 %}
-                <a href="/movies?page={{ page - 1 }}">&laquo; Previous</a>
-            {% endif %}
-            {% if page < pages %}
-                <a href="/movies?page={{ page + 1 }}">Next &raquo;</a>
-            {% endif %}
-        </div>
+    <br>
+    <div class = "pagination">
+        {% if page > 1 %}
+            <a href="/movies?page={{ page - 1 }}">&laquo; Previous</a>
+        {% endif %}
+        {% if page < pages %}
+            <a href="/movies?page={{ page + 1 }}">Next &raquo;</a>
         {% endif %}
     </div>
+
+    </div>
+{% endblock %}
 
     
 </body>

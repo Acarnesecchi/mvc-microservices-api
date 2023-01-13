@@ -1,6 +1,6 @@
+{% extends "index.html" %}
 {% block content %}
-    <h1>{% block title %} Add a New Movie {% endblock %}</h1>
-    <form method="post">
+<form method="post" enctype="multipart/form-data" action="/movies/create">
         <p>
             <label for="title">Title</label>
             <input type="text" name="title">
@@ -19,7 +19,7 @@
                 <option value="comedy">Comedy</option>
                 <option value="fantasy">Fantasy</option>
                 <option value="horror">Horror</option>
-                <option value="drama">Romance</option>
+                <option value="drama">Drama</option>
                 <option value="western">Western</option>
                 <option value="science-fiction">Sci-Fi</option>
             </select>
@@ -29,15 +29,11 @@
             <label for="rating">What's the movie's rating?</label>
             <input type="text" name="rating">
         </p>
-
-        <p>
-            <label for="image">URL of the movie's poster?</label>
-            <input type="text" name="image">
-        </p>
-
-
-        <p>
-            <button type="submit">Submit</button>
-        </p>
-    </form>
+    <p>
+        <label for="poster">Poster:</label>
+        <input type="file" id="poster" name="poster">
+    </p>
+    <br>
+    <input type="submit" value="Create">
+</form>
 {% endblock %}

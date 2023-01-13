@@ -5,6 +5,8 @@
     <title>Title</title>
 </head>
 <body>
+{% extends "index.html" %}
+{% block content %}
 
 <form id="edit-form">
   <!-- form elements here -->
@@ -44,6 +46,8 @@
   <button type="submit" onclick="updateMovie()">Update movie</button>
 </form>
 
+
+
 <script>
   function updateMovie() {
     fetch('/movies/{{ movie.id }}', {
@@ -63,5 +67,6 @@
     })
   }
 </script>
+    {% endblock %}
 </body>
 </html>

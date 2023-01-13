@@ -6,19 +6,18 @@
     <title>Document</title>
 </head>
 <body>
-<h1>My First Heading</h1>
-        {% block content %}
-            <div class = "movie">
-                <h1>{{ movie.title }}</h1>
-                <p>{{ movie.genre }}</p>
-                <p>{{ movie.year }}</p>
-                <p>{{ movie.rating }}</p>
-                <img src="{{ movie.image }}" alt="movie image">
-            </div>
-            </a>
-        {% endblock %}
+{% extends "index.html" %}
+{% block content %}
+<div class="movie-container" style="display: flex;">
+  <img src="{{ movie.image }}" alt="{{ movie.title }} poster" class="movie-poster" style="width: 20%;">
+  <div style="width: 80%; padding: 20px;">
+    <h1 style="font-size: 2em; margin-bottom: 10px;">{{ movie.title }}</h1>
+    <p style="font-size: 1.5em; margin-bottom: 10px;">{{ movie.genre }}</p>
+    <p style="font-size: 1.5em; margin-bottom: 10px;">{{ movie.year }}</p>
+    <p style="font-size: 1.5em; margin-bottom: 10px;">{{ movie.rating }}</p>
     <button type="button" onclick="window.location.href='http://localhost:5000/movies/edit/{{ movie.id }}'">Edit movie</button>
-    <button onclick="deleteMovie({{ movie.id }})">Delete movie</button>
+    <button class="violent-button" onclick="deleteMovie({{ movie.id }})">Delete movie</button>
+
 
     <script>
         function deleteMovie(id) {
@@ -32,6 +31,7 @@
             })
         }
     </script>
+{% endblock %}
 </body>
 </html>
 </doctype>
