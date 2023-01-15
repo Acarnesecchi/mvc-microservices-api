@@ -1,14 +1,14 @@
-package main
+package routes
 
 import (
-	"github.com/Acarnesecchi/mvc-microservices-api/controller"
-	"net/http"
+	"actors/controller"
+	"github.com/gorilla/mux"
 )
 
-func SetupRoutes(ac controller.ActorController) {
-	http.HandleFunc("/actors", ac.Index)
-	http.HandleFunc("/actors/show", ac.Show)
-	http.HandleFunc("/actors/create", ac.Create)
-	http.HandleFunc("/actors/update", ac.Update)
-	http.HandleFunc("/actors/delete", ac.Delete)
+func SetupRoutes(ac controller.ActorController, router *mux.Router) {
+	router.HandleFunc("/actors", ac.Index).Methods("GET")
+	router.HandleFunc("/actors/create", ac.Create).Methods("POST")
+	router.HandleFunc("/actors/{id:[0-9]+}", ac.Update).Methods("PUT")
+	router.HandleFunc("/actors/{id:[0-9]+}", ac.Delete).Methods("DELETE")
+	router.HandleFunc("/actors/{id:[0-9]+}", ac.Show).Methods("GET")
 }
