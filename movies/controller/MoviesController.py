@@ -22,7 +22,7 @@ def log_event(event, id, title):
 
 def get_all_movies():
     keyword = request.args.get('keyword')
-    genre = request.args.get('genre')
+    genre = request.args.get('filter_genre')
     page = request.args.get('page', 1, type=int)
     per_page = 9
     query = Movies.query
@@ -57,6 +57,7 @@ def get_movie_by_id(id):
         for actor in actors if
         (db.session.query(Casting).filter(Casting.actor_id == actor['id']).filter(Casting.movie_id == id).count() > 0)
     ]
+    print(filtered_actors)
     return render_template('movieDetails.html', movie=movie, actors=filtered_actors)
 
 
