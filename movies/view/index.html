@@ -10,24 +10,27 @@
             margin-left: 50px;
             text-decoration: none;
         }
-
-        .book {
-            padding: 20px;
-            margin: 10px;
-            background-color: #f7f4f4;
-        }
-
-        .review {
-                margin-left: 50px;
-                font-size: 20px;
-        }
-
     </style>
 </head>
 <body>
     <nav>
-        <a href="/movies">Movies</a>
-        <a href="http://localhost:8080">Actors</a>
+        <a href="http://localhost:5000/movies">Movies</a>
+        <a href="http://localhost:8080/actors">Actors</a>
+            <form method="get" action="/movies">
+        <label for="keyword">Search:</label>
+        <input type="text" id="keyword" name="keyword" value="{{ request.args.keyword }}">
+        <label for="filter_genre">Filter by genre:</label>
+        <select id="filter_genre" name="filter_genre">
+            <option value="">All</option>
+            <option value="action" {% if request.args.filter_genre == 'action' %}selected{% endif %}>Action</option>
+            <option value="comedy" {% if request.args.filter_genre == 'comedy' %}selected{% endif %}>Comedy</option>
+            <option value="drama" {% if request.args.filter_genre == 'drama' %}selected{% endif %}>Drama</option>
+        </select>
+        <input type="submit" value="Filter">
+    </form>
+
+
+
     </nav>
     <hr>
     <div class="content">

@@ -15,6 +15,13 @@
     <p style="font-size: 1.5em; margin-bottom: 10px;">{{ movie.genre }}</p>
     <p style="font-size: 1.5em; margin-bottom: 10px;">{{ movie.year }}</p>
     <p style="font-size: 1.5em; margin-bottom: 10px;">{{ movie.rating }}</p>
+      <p style="font-size: 1.5em; margin-bottom: 10px;">Casting:</p>
+        {% for actor in actors %}
+            <a href="http://localhost:8080/actors/{{ actor.id }}">
+          <p>{{ actor.first_name }} {{ actor.second_name }} ({{ actor.audience_rating }}),</p>
+            </a>
+        {% endfor %}
+  </div>
     <button type="button" onclick="window.location.href='http://localhost:5000/movies/edit/{{ movie.id }}'">Edit movie</button>
     <button class="violent-button" onclick="deleteMovie({{ movie.id }})">Delete movie</button>
 

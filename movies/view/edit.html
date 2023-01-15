@@ -15,16 +15,18 @@
 
   <!-- Genre -->
   <label for="genre">Genre:</label><br>
-            <select id="genre" name="genre">
-                <option value="action">Action</option>
-                <option value="adventure">Adventure</option>
-                <option value="comedy">Comedy</option>
-                <option value="fantasy">Fantasy</option>
-                <option value="horror">Horror</option>
-                <option value="drama">Romance</option>
-                <option value="western">Western</option>
-                <option value="science-fiction">Sci-Fi</option>
-            </select>
+    <select id="genre" name="genre">
+        <option value="action" {% if movie.genre == 'action' %}selected{% endif %}>Action</option>
+        <option value="adventure" {% if movie.genre == 'adventure' %}selected{% endif %}>Adventure</option>
+        <option value="comedy" {% if movie.genre == 'comedy' %}selected{% endif %}>Comedy</option>
+        <option value="fantasy" {% if movie.genre == 'fantasy' %}selected{% endif %}>Fantasy</option>
+        <option value="horror" {% if movie.genre == 'horror' %}selected{% endif %}>Horror</option>
+        <option value="drama" {% if movie.genre == 'drama' %}selected{% endif %}>Drama</option>
+        <option value="romance" {% if movie.genre == 'romance' %}selected{% endif %}>Romance</option>
+        <option value="western" {% if movie.genre == 'western' %}selected{% endif %}>Western</option>
+        <option value="science-fiction" {% if movie.genre == 'science-fiction' %}selected{% endif %}>Sci-Fi</option>
+    </select>
+
             <br>
 
   <!-- Year -->
